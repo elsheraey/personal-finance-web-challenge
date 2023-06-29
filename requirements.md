@@ -7,7 +7,7 @@ saving goal and monthly deposit will be calculated for them.
 
 Your task is to simulate this environment and build:
 
-1. The Front-End using React and mantine.
+1. The Front-End using [React](https://react.dev) and [mantine](https://mantine.dev).
 2. The Back-End using the language and database of your choice.
 
 ## Web app structure
