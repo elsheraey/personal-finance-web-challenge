@@ -1,44 +1,41 @@
 # personal-finance-web-challenge
 
-The goal of this project is to follow [this requirements](./requirements.md) to build a simple personal finance web app where users will enter a saving goal and monthly deposit will be calculated for them.
+## Overview
 
-## Initial thoughts
+The goal of this exercise is to follow [these requirements](./requirements.md) to build a simple personal finance web app where users will enter a saving goal and monthly deposit will be calculated for them.
 
-- Since Mantine is new for me, I will start from [Usage with create-react-app](https://mantine.dev/guides/cra) and build incrementally from there.
+## Tech Stack
 
-- Will I need to use a tool for state management like Redux?
+- Frontend: [React](https://react.dev) + [Mantine](https://mantine.dev)
+- Backend: [NestJS](https://nestjs.com)
+- Database: [PostgreSQL](https://www.postgresql.org) with [Prisma ORM](https://www.prisma.io)
 
-  - It might be useful if I want to complicate things...
-  - Try to start without it and see how it goes.
+## Repositories
 
-- Will I need to do routing?
+### This exercise is divided into two repositories: 
 
-  - It would be cleaner to have separate pages... 
-  - Just Don't forget to protect the routes that require authentication.
+- [personal-finance-web-challenge-frontend](https://github.com/elsheraey/personal-finance-web-challenge-frontend)
+- [personal-finance-web-challenge-backend](https://github.com/elsheraey/personal-finance-web-challenge-backend)
 
-- Should I build a backend or just mock it up in the frontend?
+Please review each repository for running instructions.
 
-  Build a backend since it will allow me to:
-  - Mimic the real world more where both are separate.
-  - Show API consumption using axios, etc.
-  - Showcase backend skills.
+**Throughout the codebase, you can find multiple comments showcasing different decisions and potential improvements through out the code. These comments are searchable with the following keys: TODO, OPTIMIZATION, REFACTOR and NOTE.**
 
-- Should I use NextJS and build a full stack app? If not, what should I use for the backend and DB?
-  
-  No, Using a backend-targeted framework like NestJS would be a better choice to speed up dev since it's Eid. 
-  
-  Lets use:
-    - NestJS to serve our APIs, 
-    - PostgreSQL for the database, 
-    - and Prisma as the ORM since it will allow me to quickly form the schema.
+## Resources
 
-- Should I create a monorepo using [Nx](https://nx.dev) or [Turborepo](https://turbo.build)?
+- [Database Schema](https://github.com/elsheraey/personal-finance-web-challenge-backend/blob/main/prisma/schema.prisma)
+- [Authentication Endpoints](https://github.com/elsheraey/personal-finance-web-challenge-backend/blob/main/src/auth/auth.controller.ts)
+- [Goals Endpoints](https://github.com/elsheraey/personal-finance-web-challenge-backend/blob/main/src/goals/goals.controller.ts)
+- [Initial Thoughts](./initial-thoughts.md)
 
-  Nah, as it will enable me to:
-  - Easily deploy them separately to Vercel and Heroku/Render.
-  - Avoid unnecessary configuration.
+## Notes, Future-work, and Potential Improvements
 
-- What kind of authentication should we build?
+- JWT authentication with multiple refresh token is fully implemented in the backend. Yet the frontend axios client still requires a request interceptor to use these refresh tokens upon access token expiration.
 
-  - Go with Firebase Auth or Auth0 for speed. 
-  - Build a simple JWT-based auth. to better match the job description responsibilities.
+- Since this is my first use of Mantine. It was fun as it has similar features to all UI libraries out there. Just note that I tried to restrict myself to follow patterns mentioned in the documentation.
+
+- I ended up using Redux instead of restricting myself to localStorage as [initially thought](./initial-thoughts.md) to make the exercise more complete.
+
+- Pagination, List Virtualization and Caching are all potential optimizations though I thought it would be over-doing it for the sake of this exercise.
+
+- For frontend tests, I showcased multiple use-cases of the React Testing Library though I feel I should've done more in terms of E2E and Visual tests but again, I felt like it would be a huge investment for this exercise.
